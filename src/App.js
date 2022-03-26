@@ -5,7 +5,9 @@ import TodoList from "./features/TodoList/index";
 import TodoForm from "./features/TodoForm/index";
 import PostList from "./features/PostList/index";
 import Pagination from "./features/Pagination/index";
-import queryString from 'query-string'
+import queryString from "query-string";
+import PostFilterForm from "./features/SearchTerm/index";
+import F8TodoList from './features/F8TodoList/index';
 
 function App() {
   // STATE
@@ -23,7 +25,8 @@ function App() {
   const [filter, setFilter] = useState({
     _limit: 10,
     _page: 1,
-  })
+    title_like: '',
+  });
 
   // FUNCTION HANDLE CLICK
   function handleTodoClick(todo) {
@@ -51,8 +54,16 @@ function App() {
     });
   }
 
+  function handleFormSearch(newFilter) {
+    setFilter({
+      ...filter,
+      _page: 1,
+      title_like: newFilter.searchTerm,
+    });
+  }
+
   // UseEffect HOOK
-  useEffect(() => { 
+  useEffect(() => {
     async function fetchPostList() {
       try {
         const paramString = queryString.stringify(filter);
@@ -73,12 +84,19 @@ function App() {
     <div className="App">
       <p>LAB 01: COLOR BOX</p>
       <ColorBox />
+
       <p>LAB 02: TODO LIST</p>
       <TodoList todos={todoList} onTodoClick={handleTodoClick} />
       <TodoForm onSubmit={handleFormSubmit} />
+
       <p>LAB 03: POST_LIST</p>
+      <PostFilterForm onSubmit={handleFormSearch} />
       <PostList posts={postList} />
       <Pagination pagination={pagination} onChangePage={hanldePageChange} />
+
+      <p>LAB 04: F8 TodoList</p>
+      <F8TodoList/>
+
     </div>
   );
 }
