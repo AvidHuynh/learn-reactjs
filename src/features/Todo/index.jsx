@@ -1,5 +1,6 @@
-import { React, useState } from "react";
-import TodoList from "./components/TodoList/index";
+import { React, useState } from 'react';
+import TodoForm from './components/TodoForm/index';
+import TodoList from './components/TodoList/index';
 
 TodoFeature.propTypes = {};
 
@@ -7,18 +8,18 @@ function TodoFeature(props) {
   const initTodoList = [
     {
       id: 1,
-      title: "Learning",
-      status: "new",
+      title: 'Learning',
+      status: 'new',
     },
     {
       id: 2,
-      title: "Watch Film",
-      status: "completed",
+      title: 'Watch Film',
+      status: 'completed',
     },
     {
       id: 3,
-      title: "Relax",
-      status: "new",
+      title: 'Relax',
+      status: 'new',
     },
   ];
 
@@ -28,12 +29,26 @@ function TodoFeature(props) {
     const newTodoList = [...todoList];
     newTodoList[idx] = {
       ...newTodoList[idx],
-      status: newTodoList[idx].status === "new" ? "completed" : "new",
+      status: newTodoList[idx].status === 'new' ? 'completed' : 'new',
     };
     setTodoList(newTodoList);
   };
+
+  const handleFormSubmit = (values) => {
+    console.log('Form values:', values);
+    const newTodo = {
+      id: todoList.length + 1,
+      title: values.title,
+      status: 'new',
+    };
+    const newTodoList = [...todoList, newTodo];
+    setTodoList(newTodoList);
+  };
+
   return (
     <div>
+      <h3>What to do 😊 </h3>
+      <TodoForm onSubmit={handleFormSubmit} />
       <h3>TodoList</h3>
       <TodoList todoList={todoList} onTodoClick={handleClick} />
     </div>

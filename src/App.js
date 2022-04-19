@@ -1,22 +1,19 @@
-import React, {useEffect} from 'react';
+import ButtonAppBar from 'components/Header';
+import React from 'react';
+import { Route } from 'react-router-dom';
 import './App.scss';
-import productsApi from './Api/productApi';
+import AlbumsFeature from './features/Albums/index';
+import TodoFeature from './features/Todo/index';
+
 
 function App() {
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const params = {
-        _limit: 10,
-      }
-      const productList = await productsApi.getAll(params);
-      console.log(productList);
-    };
-    fetchProducts()
-  }, [])
   return (
-    <div className="App">   
+    <div className="App">
+      <ButtonAppBar />
+      <Route path="/todo" component={TodoFeature} />
+      <Route path="/album" component={AlbumsFeature} />
     </div>
-  ); 
+  );
 }
 
 export default App;
