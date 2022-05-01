@@ -29,6 +29,15 @@ axiosClient.interceptors.response.use(
   },
   function (error) {
     // Bất kì mã trạng thái nào lọt ra ngoài tầm 2xx đều khiến hàm này được trigger\
+    const { config, status, data } = error.response;
+    const URL = ['/auth/local/register', '/auth/local']
+    if (URL.includes(config.url) && status === 400) {
+      const errorList = data.data || [];
+      const firstError = errorList.length > 0 ? errorList[0] : {};
+      const messageList = firstError.messages || [];
+      const firstMessage = messageList.length > 0 ? messageList[0] : {};
+      throw new Error(firstMessage.message);
+    }
     // Làm gì đó với lỗi response
     return Promise.reject(error);
   }

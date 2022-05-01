@@ -1,17 +1,19 @@
 import ButtonAppBar from 'components/Header';
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.scss';
-import AlbumsFeature from './features/Albums/index';
+import ProducsFeature from './features/Product/index';
 import TodoFeature from './features/Todo/index';
-
 
 function App() {
   return (
     <div className="App">
       <ButtonAppBar />
-      <Route path="/todo" component={TodoFeature} />
-      <Route path="/album" component={AlbumsFeature} />
+      <Switch>
+        <Redirect from="/home" to="/" exact />
+        <Route path="/todo" component={TodoFeature} />
+        <Route path="/products" component={ProducsFeature} />
+      </Switch>
     </div>
   );
 }

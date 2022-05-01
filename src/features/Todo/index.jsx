@@ -1,3 +1,4 @@
+import { Container } from '@material-ui/core';
 import { React, useState } from 'react';
 import TodoForm from './components/TodoForm/index';
 import TodoList from './components/TodoList/index';
@@ -46,12 +47,12 @@ function TodoFeature(props) {
   };
 
   return (
-    <div>
+    <Container>
       <h3>What to do 😊 </h3>
       <TodoForm onSubmit={handleFormSubmit} />
       <h3>TodoList</h3>
       <TodoList todoList={todoList} onTodoClick={handleClick} />
-    </div>
+    </Container>
   );
 }
 
