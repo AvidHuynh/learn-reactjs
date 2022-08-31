@@ -73,8 +73,8 @@ export default function ButtonAppBar() {
   };
 
   return (
-    <Box >
-      <AppBar position="static" >
+    <Box>
+      <AppBar position="static">
         <Container>
           <Toolbar className={classes.root}>
             <CodeIcon className={classes.menuButton} color="inherit" />
