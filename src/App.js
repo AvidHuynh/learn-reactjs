@@ -4,7 +4,7 @@ import logo from '../src/logo.svg';
 import './App.scss';
 import ProducsFeature from './features/Product/index';
 import TodoFeature from './features/Todo/index';
-import { Button } from '@material-ui/core';
+import { Button, Grid, Box, Container } from '@material-ui/core';
 
 function App() {
   return (
@@ -15,14 +15,19 @@ function App() {
         <Redirect from="/post-list/:postId" to="/posts/:postId" exact />
 
         <Route path="/" exact>
-          <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="text">Welcome to Mini Project of Avid</h1>
-            <Button variant="contained" color="success" className="btn" href="/products">
-              Go To The Product-Listing Page
-            </Button>
-          </div>
+          <Box>
+            <Container>
+              <Grid container spacing={1} className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <h1 className="text">Welcome to Mini Project of Avid</h1>
+                <Button variant="contained" color="success" className="btn" href="/products">
+                  Go To The Product-Listing Page
+                </Button>
+              </Grid>
+            </Container>
+          </Box>
         </Route>
+        
         <Route path="/products" component={ProducsFeature} />
         <Route path="/todo" component={TodoFeature} />
       </Switch>
