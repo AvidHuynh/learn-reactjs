@@ -154,6 +154,7 @@ function PageList(props) {
               <ProductFilter filters={queryParams} onChange={handleFilterChange} />
             </Paper>
           </Grid>
+          
           <Grid item className={classes.right}>
             <Paper elevation={0}>
               <ProductSort currentSort="salePrice" onChange={handleSortChange} />

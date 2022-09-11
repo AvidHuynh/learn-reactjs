@@ -1,8 +1,8 @@
 {
-    "editor.formatOnSave": true,
-    "editor.fontFamily": "'Fira Code'",
-    "editor.fontLigatures": true,
-    "editor.formatOnPaste": true,
-    "editor.lineHeight": 1.7,
-    "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "'Fira Code'",
+  "editor.fontLigatures": true,
+  "editor.formatOnPaste": true,
+  "editor.lineHeight": 2,
+  "editor.fontSize": 14
 }

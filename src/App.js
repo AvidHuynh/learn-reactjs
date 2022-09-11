@@ -1,5 +1,5 @@
 import ButtonAppBar from 'components/Header';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import logo from '../src/logo.svg';
 import './App.scss';
 import ProducsFeature from './features/Product/index';
@@ -19,15 +19,17 @@ function App() {
             <Container>
               <Grid container spacing={1} className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                <h1 className="text">Welcome to Mini Project of Avid</h1>
-                <Button variant="contained" color="success" className="btn" href="/products">
-                  Go To The Product-Listing Page
-                </Button>
+                <h1 className="text">Welcome to PetProject of Avid</h1>
+                <Link className="link-text" to="/products">
+                  <Button variant="contained" color="success" className="btn">
+                    Go To The Product-Listing Page
+                  </Button>
+                </Link>
               </Grid>
             </Container>
           </Box>
         </Route>
-        
+
         <Route path="/products" component={ProducsFeature} />
         <Route path="/todo" component={TodoFeature} />
       </Switch>

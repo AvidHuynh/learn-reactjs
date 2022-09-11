@@ -17,9 +17,11 @@ function ProductFilter({ filters, onChange }) {
     };
     onChange(newFilters);
   };
+  
   const handleChange = (values) => {
     if (onChange) onChange(values);
   };
+
   return (
     <div>
       <ProductCategoryFilter onChange={hanldeCategoryChange} />
